@@ -13,5 +13,9 @@ export class UserLoginComponent {
   constructor(){
 
   }
+  submit() {
+    console.log(this.login);
+    console.log(this.password);
 
+  }
 }
