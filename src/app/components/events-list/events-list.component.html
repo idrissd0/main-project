@@ -1,1 +1,10 @@
-<p>events-list works!</p>
+<div>
+  <!-- <h1>{{ladate}}</h1> -->
+  <!-- <full-calendar [options]="calendarOptions" ></full-calendar> -->
+  <full-calendar [events]="EVENTS" [options]="calendarOptions">
+    <ng-template #eventContent let-arg>
+      <b>{{arg.timeText}}</b>
+      <i>{{arg.event.title}}</i>
+    </ng-template>
+  </full-calendar>
+</div>
