@@ -1,4 +1,5 @@
 full-calendar{
+  margin-right: 50px;
   height: 700px !important;
   width: 1000px !important;
 }
@@ -65,7 +66,7 @@ full-calendar{
   font-size: 12px;
 }
 
-.login-box form button {
+input[type='submit'] {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -78,10 +79,11 @@ full-calendar{
   margin-top: 40px;
   letter-spacing: 4px;
   background-color: unset;
+  border: none;
   /* border: 1px ; */
 }
 
-.login-box button:hover {
+.login-box input[type='submit']:hover {
   /* background: #03e9f4; */
   /* color: #fff; */
   border-radius: 5px;

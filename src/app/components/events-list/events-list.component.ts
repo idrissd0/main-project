@@ -5,6 +5,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { INITIAL_EVENTS, createEventId } from './evenlist';
+import { DatePipe } from '@angular/common';
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-events-list',
@@ -13,6 +15,19 @@ import { INITIAL_EVENTS, createEventId } from './evenlist';
 })
 
 export class EventsListComponent {
+
+  eventInput: string ;
+  dateInput:  Date ;
+
+  Events = {
+    title: '',
+    date: '' ,
+  }
+
+  currentEvents: any = [{
+    title: 'test',
+    date: new Date() ,
+  }];
 
   calendarOptions: CalendarOptions  = {
     plugins:[
@@ -23,13 +38,20 @@ export class EventsListComponent {
     weekends: true,
     editable: true,
     selectable: true,
-    initialEvents: INITIAL_EVENTS,
-    select: this.handleDateSelect.bind(this)
+    initialEvents: this.currentEvents,
+    // select: this.handleDateSelect.bind(this)
   }
 
-  currentEvents: EventApi[] = [];
+  constructor(/*private datePipe: DatePipe*/) {
+    // this.dateInput = this.datePipe.transform(this.dateInput, 'yyyy-MM-dd');
+  }
 
-  constructor(private changeDetector: ChangeDetectorRef) {
+  handlesubmit(){
+    this.Events.title = this.eventInput;
+    this.Events.date = this.dateInput.toString();
+    // console.log(this.Events);
+    this.currentEvents.push(this.Events);
+    console.log(this.currentEvents);
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
@@ -48,7 +70,6 @@ export class EventsListComponent {
       });
     }
   }
-
 }
 
   // EVENTS = [
